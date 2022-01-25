@@ -1,0 +1,27 @@
+* {
+    padding: 0;
+    margin: 0;
+
+}
+main{
+    flex: 1;
+    background: rgba(0, 128, 0, 0.3) 
+}
+a {
+    float: right; 
+    border: 1px solid #000; 
+    color: black;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+     
+    
+    
+}
+footer{
+    background-color: #FC28FB;
+    text-align: center;
+}
+header{
+    background-color: #FC28FB;
+    }

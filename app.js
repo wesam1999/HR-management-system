@@ -36,13 +36,15 @@ function EmployeeObject(EmployeeIDV,mageURLV,FullNameV,DepartmentV,LevelV){
 
     EmployeeObject.prototype.render2 = function (){
         let img = document.createElement('img');
+        let div=document.createElement('div');
+        employee.appendChild(div);
     div.appendChild(img);
     img.setAttribute('src',this.Imageurl);
     img.setAttribute('alt',this.fullname);
     let p = document.createElement('p');
     div.appendChild(p);
-        p.textContent=`name: ${this.FullName} -id: ${this.Salary} `;
-        p.textContent=`Department: ${this.Department} -Level: ${this.Level} `;
+        p.textContent=`name: ${this.FullName} -id: ${this.Salary} <br>${this.Department} -Level: ${this.Level}`;
+       
     }
 
 
@@ -56,13 +58,13 @@ function EmployeeObject(EmployeeIDV,mageURLV,FullNameV,DepartmentV,LevelV){
     function handelSubmit(event) {
         event.preventDefault();
         let fullname = event.target.name.value ;
-        let Department = event.target.DepartmentEmplo.value;
+        let d1 = event.target.d1.value;
         
-        let LevelEmplo = event.target.LevelEmplo.value;
+        let LevelEmplo = event.target.Level.value;
         
         let Imageurl = event.target.Imageurl.value;
 
-        const newEmployee = new EmployeeObject(employeeId(),Imageurl,fullname,Department,LevelEmplo);
+        const newEmployee = new EmployeeObject(employeeId(),Imageurl,fullname,d1,LevelEmplo);
         newEmployee.render();
         newEmployee.render2();  
         //    console.log(ingredientsArr);

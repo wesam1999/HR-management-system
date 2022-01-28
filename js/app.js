@@ -2,9 +2,9 @@ let drinkForm = document.getElementById('drinkForm');
 let employee = document.getElementById('employee');
 
 
-function EmployeeObject(EmployeeIDV,mageURLV,FullNameV,DepartmentV,LevelV){
-    this.EmployeeID=EmployeeIDV;
-    this.mageURL=mageURLV;
+function EmployeeObject(mageURLV,FullNameV,DepartmentV,LevelV){
+    this.EmployeeID=0;
+    this.ImageURL=mageURLV;
     this.Salary=0;
     this.FullName=FullNameV;
     this.Department=DepartmentV;
@@ -13,46 +13,52 @@ function EmployeeObject(EmployeeIDV,mageURLV,FullNameV,DepartmentV,LevelV){
     }
     
     console.log( Math.floor(Math.random() * (9999 - 1000 )) + 1000);
+    EmployeeObject.prototype.employeeId =function(){
 
+     this.EmployeeID=Math.floor(Math.random() * (9999 - 1000 )) + 1000;
+
+    }
 
     EmployeeObject.prototype.render =function(){
-    if(this.Level=="Senior"){
-    let max=2000,min=1500,tax= 7.5;
-    let netsalary=(Math.floor(Math.random() * (max - min )) + min)*tax;	
-    return netsalary;
-    }
-    else if(this.Level=="Mid-Senior"){
-        let max=1500,min=1000,tax= 7.5;
-        let netsalary=(Math.floor(Math.random() * (max - min )) + min)*tax;
-        return netsalary;    
-    }
-    else if(this.Level=="Junior"){
-        let max=1000,min=500,tax= 7.5;
-        let netsalary=(Math.floor(Math.random() * (max - min )) + min)* tax;
-        return netsalary;    
-    }
-    }
+        if(this.Level==="Senior"){    
+            let tax=7.5;
+            this.Salary=getRandomNumber(1500,2000)*tax;	
+        
+        }
+        if(this.Level==="Mid-Senior"){
+           let tax=7.5    
+            this.Salary=getRandomNumber(1000,1500)*tax;	
+        
+        }
+        if(this.Level==="Junior"){
+            let tax=7.5    
+            this.Salary=getRandomNumber(1000,500)*tax;	
+        
+        }
+        
+        
+        }
+        function getRandomNumber(min,max){
+            return Math.floor(Math.random() * (max-min) + min);    
+        }
 
 
     EmployeeObject.prototype.render2 = function (){
         let img = document.createElement('img');
         let div=document.createElement('div');
         employee.appendChild(div);
-    div.appendChild(img);
-    img.setAttribute('src',this.Imageurl);
-    img.setAttribute('alt',this.fullname);
-    let p = document.createElement('p');
+        div.appendChild(img);
+        img.setAttribute('src',this.Imageurl);
+    
+        let p = document.createElement('p');
     div.appendChild(p);
-        p.textContent=`name: ${this.FullName} -id: ${this.Salary} <br>${this.Department} -Level: ${this.Level}`;
+        p.textContent=`name: ${this.FullName} -id: ${this.Salary}  ${this.Department} -Level: ${this.Level}`;
        
     }
 
 
 
-    function employeeId(){
-      return  Math.floor(Math.random() * (9999 - 1000 )) + 1000 ;
-    }
-
+    
 
 
     function handelSubmit(event) {
@@ -62,9 +68,10 @@ function EmployeeObject(EmployeeIDV,mageURLV,FullNameV,DepartmentV,LevelV){
         
         let LevelEmplo = event.target.Level.value;
         
-        let Imageurl = event.target.Imageurl.value;
+        let Imageurl = event.target.Image.value;
 
-        const newEmployee = new EmployeeObject(employeeId(),Imageurl,fullname,d1,LevelEmplo);
+        const newEmployee = new EmployeeObject(Imageurl,fullname,d1,LevelEmplo);
+        newEmployee.employeeId();
         newEmployee.render();
         newEmployee.render2();  
         //    console.log(ingredientsArr);
@@ -104,7 +111,9 @@ function EmployeeObject(EmployeeIDV,mageURLV,FullNameV,DepartmentV,LevelV){
         // const newEmployee6 = new EmployeeObject(1006,"Hadi Ahmad","Finance","Mid-Senior");
         // newEmployee6.render2();
         // newEmployee6.render();   
-    
+       
+            
+        
     
     
         drinkForm.addEventListener('submit',handelSubmit);

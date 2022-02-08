@@ -73,8 +73,9 @@ function EmployeeObject(mageURLV,FullNameV,DepartmentV,LevelV){
 
         const newEmployee = new EmployeeObject(Imageurl,fullname,d1,LevelEmplo);
         newEmployee.employeeId();
-        newEmployee.render2(); 
         newEmployee.render();
+        newEmployee.render2(); 
+        
          
         //    console.log(ingredientsArr);
         

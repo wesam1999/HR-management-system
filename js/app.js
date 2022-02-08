@@ -48,7 +48,8 @@ function EmployeeObject(mageURLV,FullNameV,DepartmentV,LevelV){
         let div=document.createElement('div');
         employee.appendChild(div);
         div.appendChild(img);
-        img.setAttribute('src',this.Imageurl);
+        img.setAttribute('src',this.ImageURL);
+        console.log(this.ImageURL);
     
         let p = document.createElement('p');
     div.appendChild(p);
@@ -72,8 +73,9 @@ function EmployeeObject(mageURLV,FullNameV,DepartmentV,LevelV){
 
         const newEmployee = new EmployeeObject(Imageurl,fullname,d1,LevelEmplo);
         newEmployee.employeeId();
+        newEmployee.render2(); 
         newEmployee.render();
-        newEmployee.render2();  
+         
         //    console.log(ingredientsArr);
         
         //    console.log(`${name}  ${ingredients}  ${isCold}  ${isHot}`);
